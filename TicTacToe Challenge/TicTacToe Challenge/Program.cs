@@ -13,11 +13,11 @@ namespace TicTacToe_Challenge
             //setup the field
             string[] field = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
             bool winState = false;
-            int wichPlayer = 1;
+            int whichPlayer = 1;
             int roundCounter = 0;
             string playerResponse;
             PrintingGameStatus();
-            WichPlayer();
+            WhichPlayer();
             while (!winState)
             {
                 //ask for a number
@@ -44,7 +44,7 @@ namespace TicTacToe_Challenge
                     isNumeric = int.TryParse(playerResponse, out playerResposeInInt);
                 }
                 //over write the field
-                if (wichPlayer==1)
+                if (whichPlayer==1)
                 {
                     field[playerResposeInInt - 1] = "x";
                 }
@@ -53,7 +53,7 @@ namespace TicTacToe_Challenge
                     field[playerResposeInInt - 1] = "o";
                 }
                 PrintingGameStatus();
-                WichPlayer();
+                WhichPlayer();
                 roundCounter++;
                 if (roundCounter>=5)
                 {
@@ -140,7 +140,7 @@ namespace TicTacToe_Challenge
                         Console.WriteLine("The second player wins!");
                     }
                 }
-                //if we don't have a winner in 9 round its a draw
+                //if we don't have a winner in 9th round its a draw
                 if (9<=roundCounter)
                 {
                     Console.WriteLine("Its a draw!");
@@ -152,17 +152,17 @@ namespace TicTacToe_Challenge
                     Console.ReadKey();
                 }
             }
-            void WichPlayer() 
+            void WhichPlayer() 
             {
-                if (wichPlayer == 1)
+                if (whichPlayer == 1)
                 {
                     Console.WriteLine("\n Player 1 round! \n");
-                    wichPlayer = 2;
+                    whichPlayer = 2;
                 }
                 else
                 {
                     Console.WriteLine("\n Player2 round! \n");
-                    wichPlayer = 1;
+                    whichPlayer = 1;
                 }
             }
             void PrintingGameStatus() 
