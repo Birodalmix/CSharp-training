@@ -20,21 +20,25 @@ namespace TicTacToe_Challenge
             {
                 playerResponse = Console.ReadLine();
                 int playerResposeInInt;
-                //biztos 1-9ig szám-e a bemenet
                 var isNumeric = int.TryParse(playerResponse, out playerResposeInInt);
-                while (!isNumeric) 
+                //biztosan szám-e az adott karakter
+                while (!isNumeric || (playerResposeInInt < 1 || 9 < playerResposeInInt) || (playerResponse != field[playerResposeInInt-1])) 
                 {
-                    Console.WriteLine("This is not a number!");
-                    playerResponse= Console.ReadLine();
-                    isNumeric = int.TryParse(playerResponse, out playerResposeInInt);
-                }
-                while (playerResposeInInt<1 || 9<playerResposeInInt)
-                {
-                    Console.WriteLine("This is not a valid number!");
+                    if (!isNumeric)
+                    {
+                        Console.WriteLine("This is not a number!");
+                    }
+                    else if (playerResposeInInt < 1 || 9 < playerResposeInInt)
+                    {
+                        Console.WriteLine("This is not a valid number!");
+                    }
+                    else if (playerResponse != field[playerResposeInInt-1])
+                    {
+                        Console.WriteLine("This field is already taken!");
+                    }
                     playerResponse = Console.ReadLine();
                     isNumeric = int.TryParse(playerResponse, out playerResposeInInt);
                 }
-                //foglalt-e az adott mező
                 switch (playerResponse)
                 {
                     case "1":
@@ -214,6 +218,10 @@ namespace TicTacToe_Challenge
                 {
                     winState = true;
                     Console.WriteLine("The second player wins!");
+                }
+                if (winState)
+                {
+                    Console.ReadKey();
                 }
             }
             void WichPlayer() 
