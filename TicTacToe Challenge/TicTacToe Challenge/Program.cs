@@ -16,6 +16,8 @@ namespace TicTacToe_Challenge
             int whichPlayer = 1;
             int roundCounter = 0;
             string playerResponse;
+            const int MINIMUM_ROUND_TO_WIN = 5;
+            const int DRAW_ROUND = 9;
             PrintingGameStatus();
             WhichPlayer();
             while (!winState)
@@ -26,122 +28,48 @@ namespace TicTacToe_Challenge
                 int playerResposeInInt;
                 var isNumeric = int.TryParse(playerResponse, out playerResposeInInt);
                 //checks if the input is a number and is it 1-9 and its already taken
-                while (!isNumeric || (playerResposeInInt < 1 || 9 < playerResposeInInt) || (playerResponse != field[playerResposeInInt-1])) 
+                bool isCorrectResponse = false;
+                while (!isCorrectResponse)
                 {
                     if (!isNumeric)
                     {
                         Console.WriteLine("This is not a number!");
+                        playerResponse = Console.ReadLine();
+                        isNumeric = int.TryParse(playerResponse, out playerResposeInInt);
                     }
                     else if (playerResposeInInt < 1 || 9 < playerResposeInInt)
                     {
                         Console.WriteLine("This is not a valid number!");
+                        playerResponse = Console.ReadLine();
+                        isNumeric = int.TryParse(playerResponse, out playerResposeInInt);
                     }
-                    else if (playerResponse != field[playerResposeInInt-1])
+                    else if (playerResponse != field[playerResposeInInt - 1])
                     {
                         Console.WriteLine("This field is already taken!");
+                        playerResponse = Console.ReadLine();
+                        isNumeric = int.TryParse(playerResponse, out playerResposeInInt);
                     }
-                    playerResponse = Console.ReadLine();
-                    isNumeric = int.TryParse(playerResponse, out playerResposeInInt);
+                    else
+                    {
+                        isCorrectResponse = true;
+                    }
                 }
                 //over write the field
-                if (whichPlayer==1)
-                {
-                    field[playerResposeInInt - 1] = "x";
-                }
-                else
-                {
-                    field[playerResposeInInt - 1] = "o";
-                }
+                field[playerResposeInInt - 1] = whichPlayer == 1 ? "x" : "o";
                 PrintingGameStatus();
-                WhichPlayer();
                 roundCounter++;
-                if (roundCounter>=5)
+                if (roundCounter >= MINIMUM_ROUND_TO_WIN)
                 {
-                    //the first player wins
-                    if (field[0] == "x" && field[1] == "x" & field[2] == "x")
+                    if (whichPlayer == 1)
                     {
-                        winState = true;
-                        Console.WriteLine("First player wins!");
+                        IsFirstPlayerWins();
                     }
-                    else if (field[3] == "x" && field[4] == "x" & field[5] == "x")
+                    else
                     {
-                        winState = true;
-                        Console.WriteLine("First player wins!");
-                    }
-                    else if (field[6] == "x" && field[7] == "x" & field[8] == "x")
-                    {
-                        winState = true;
-                        Console.WriteLine("First player wins!");
-                    }
-                    else if (field[0] == "x" && field[3] == "x" & field[6] == "x")
-                    {
-                        winState = true;
-                        Console.WriteLine("First player wins!");
-                    }
-                    else if (field[1] == "x" && field[4] == "x" & field[7] == "x")
-                    {
-                        winState = true;
-                        Console.WriteLine("First player wins!");
-                    }
-                    else if (field[2] == "x" && field[5] == "x" & field[8] == "x")
-                    {
-                        winState = true;
-                        Console.WriteLine("First player wins!");
-                    }
-                    else if (field[0] == "x" && field[4] == "x" & field[8] == "x")
-                    {
-                        winState = true;
-                        Console.WriteLine("First player wins!");
-                    }
-                    else if (field[2] == "x" && field[4] == "x" & field[6] == "x")
-                    {
-                        winState = true;
-                        Console.WriteLine("First player wins!");
-                    }
-                    //the second player wins
-                    if (field[0] == "o" && field[1] == "o" & field[2] == "o")
-                    {
-                        winState = true;
-                        Console.WriteLine("The second player wins!");
-                    }
-                    else if (field[3] == "o" && field[4] == "o" & field[5] == "o")
-                    {
-                        winState = true;
-                        Console.WriteLine("The second player wins!");
-                    }
-                    else if (field[6] == "o" && field[7] == "o" & field[8] == "o")
-                    {
-                        winState = true;
-                        Console.WriteLine("The second player wins!");
-                    }
-                    else if (field[0] == "o" && field[3] == "o" & field[6] == "o")
-                    {
-                        winState = true;
-                        Console.WriteLine("The second player wins!");
-                    }
-                    else if (field[1] == "o" && field[4] == "o" & field[7] == "o")
-                    {
-                        winState = true;
-                        Console.WriteLine("The second player wins!");
-                    }
-                    else if (field[2] == "o" && field[5] == "o" & field[8] == "o")
-                    {
-                        winState = true;
-                        Console.WriteLine("The second player wins!");
-                    }
-                    else if (field[0] == "o" && field[4] == "o" & field[8] == "o")
-                    {
-                        winState = true;
-                        Console.WriteLine("The second player wins!");
-                    }
-                    else if (field[2] == "o" && field[4] == "o" & field[6] == "o")
-                    {
-                        winState = true;
-                        Console.WriteLine("The second player wins!");
+                        IsSecondPlayerWins();
                     }
                 }
-                //if we don't have a winner in 9th round its a draw
-                if (9<=roundCounter)
+                if (roundCounter == DRAW_ROUND)
                 {
                     Console.WriteLine("Its a draw!");
                     winState = true;
@@ -151,8 +79,12 @@ namespace TicTacToe_Challenge
                     Console.WriteLine("Press enter to continue!");
                     Console.ReadKey();
                 }
+                else
+                {
+                    WhichPlayer();
+                }
             }
-            void WhichPlayer() 
+            void WhichPlayer()
             {
                 if (whichPlayer == 1)
                 {
@@ -161,17 +93,103 @@ namespace TicTacToe_Challenge
                 }
                 else
                 {
-                    Console.WriteLine("\n Player2 round! \n");
+                    Console.WriteLine("\n Player 2 round! \n");
                     whichPlayer = 1;
                 }
             }
-            void PrintingGameStatus() 
+            void PrintingGameStatus()
             {
                 Console.WriteLine(" {0} | {1} | {2}", field[0], field[1], field[2]);
                 Console.WriteLine("---|---|---");
                 Console.WriteLine(" {0} | {1} | {2}", field[3], field[4], field[5]);
                 Console.WriteLine("---|---|---");
                 Console.WriteLine(" {0} | {1} | {2}", field[6], field[7], field[8]);
+            }
+            void IsFirstPlayerWins()
+            {
+                if (field[0] == "x" && field[1] == "x" & field[2] == "x")
+                {
+                    winState = true;
+                    Console.WriteLine("First player wins!");
+                }
+                else if (field[3] == "x" && field[4] == "x" & field[5] == "x")
+                {
+                    winState = true;
+                    Console.WriteLine("First player wins!");
+                }
+                else if (field[6] == "x" && field[7] == "x" & field[8] == "x")
+                {
+                    winState = true;
+                    Console.WriteLine("First player wins!");
+                }
+                else if (field[0] == "x" && field[3] == "x" & field[6] == "x")
+                {
+                    winState = true;
+                    Console.WriteLine("First player wins!");
+                }
+                else if (field[1] == "x" && field[4] == "x" & field[7] == "x")
+                {
+                    winState = true;
+                    Console.WriteLine("First player wins!");
+                }
+                else if (field[2] == "x" && field[5] == "x" & field[8] == "x")
+                {
+                    winState = true;
+                    Console.WriteLine("First player wins!");
+                }
+                else if (field[0] == "x" && field[4] == "x" & field[8] == "x")
+                {
+                    winState = true;
+                    Console.WriteLine("First player wins!");
+                }
+                else if (field[2] == "x" && field[4] == "x" & field[6] == "x")
+                {
+                    winState = true;
+                    Console.WriteLine("First player wins!");
+                }
+            }
+            void IsSecondPlayerWins()
+            {
+                if (field[0] == "o" && field[1] == "o" & field[2] == "o")
+                {
+                    winState = true;
+                    Console.WriteLine("The second player wins!");
+                }
+                else if (field[3] == "o" && field[4] == "o" & field[5] == "o")
+                {
+                    winState = true;
+                    Console.WriteLine("The second player wins!");
+                }
+                else if (field[6] == "o" && field[7] == "o" & field[8] == "o")
+                {
+                    winState = true;
+                    Console.WriteLine("The second player wins!");
+                }
+                else if (field[0] == "o" && field[3] == "o" & field[6] == "o")
+                {
+                    winState = true;
+                    Console.WriteLine("The second player wins!");
+                }
+                else if (field[1] == "o" && field[4] == "o" & field[7] == "o")
+                {
+                    winState = true;
+                    Console.WriteLine("The second player wins!");
+                }
+                else if (field[2] == "o" && field[5] == "o" & field[8] == "o")
+                {
+                    winState = true;
+                    Console.WriteLine("The second player wins!");
+                }
+                else if (field[0] == "o" && field[4] == "o" & field[8] == "o")
+                {
+                    winState = true;
+                    Console.WriteLine("The second player wins!");
+                }
+                else if (field[2] == "o" && field[4] == "o" & field[6] == "o")
+                {
+                    winState = true;
+                    Console.WriteLine("The second player wins!");
+                }
             }
         }
     }
