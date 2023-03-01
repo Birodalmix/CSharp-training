@@ -15,6 +15,7 @@ namespace TicTacToe_Challenge
             bool winState = false;
             int whichPlayer = 1;
             int roundCounter = 0;
+            int playerResposeInInt;
             string playerResponse;
             const int MINIMUM_ROUND_TO_WIN = 5;
             const int DRAW_ROUND = 9;
@@ -25,7 +26,6 @@ namespace TicTacToe_Challenge
                 //ask for a number
                 playerResponse = Console.ReadLine();
                 //if the player response is a number we convert it to int
-                int playerResposeInInt;
                 var isNumeric = int.TryParse(playerResponse, out playerResposeInInt);
                 //checks if the input is a number and is it 1-9 and its already taken
                 bool isCorrectResponse = false;
