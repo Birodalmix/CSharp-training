@@ -1,0 +1,8 @@
+C:\Users\Beni\Desktop\ProgGyak\CSharp-training\ArrayAsParametersChallenge\ArrayAsParametersChallenge\bin\Debug\ArrayAsParametersChallenge.exe.config
+C:\Users\Beni\Desktop\ProgGyak\CSharp-training\ArrayAsParametersChallenge\ArrayAsParametersChallenge\bin\Debug\ArrayAsParametersChallenge.exe
+C:\Users\Beni\Desktop\ProgGyak\CSharp-training\ArrayAsParametersChallenge\ArrayAsParametersChallenge\bin\Debug\ArrayAsParametersChallenge.pdb
+C:\Users\Beni\Desktop\ProgGyak\CSharp-training\ArrayAsParametersChallenge\ArrayAsParametersChallenge\obj\Debug\ArrayAsParametersChallenge.csproj.AssemblyReference.cache
+C:\Users\Beni\Desktop\ProgGyak\CSharp-training\ArrayAsParametersChallenge\ArrayAsParametersChallenge\obj\Debug\ArrayAsParametersChallenge.csproj.SuggestedBindingRedirects.cache
+C:\Users\Beni\Desktop\ProgGyak\CSharp-training\ArrayAsParametersChallenge\ArrayAsParametersChallenge\obj\Debug\ArrayAsParametersChallenge.csproj.CoreCompileInputs.cache
+C:\Users\Beni\Desktop\ProgGyak\CSharp-training\ArrayAsParametersChallenge\ArrayAsParametersChallenge\obj\Debug\ArrayAsParametersChallenge.exe
+C:\Users\Beni\Desktop\ProgGyak\CSharp-training\ArrayAsParametersChallenge\ArrayAsParametersChallenge\obj\Debug\ArrayAsParametersChallenge.pdb
