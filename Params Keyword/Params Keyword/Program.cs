@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 
 namespace Params_Keyword
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("price is {0}, pi is {1} at is {2}",32 ,3.1415,'@');
-            Console.WriteLine();
-            Console.ReadKey();
-            ParamsMethod("this","is","a","no","idea","lol","what");
+            int price = 50;
+            float pi = 3.14f;
+            char at = '@';
+            string book = "The Hobbit";
+
+            ParamsMethod2(price,pi,at,book);
+            ParamsMethod2("Hello",5.3,'$');
+            ParamsMethod();
         }
         public static void ParamsMethod(params string[] sentence) 
         {
@@ -22,7 +26,7 @@ namespace Params_Keyword
                 Console.Write(sentence[i] + " ");
             }
         }
-        public static void ParamsMethod2(params string[] stuff)
+        public static void ParamsMethod2(params object[] stuff)
         {
             //for each loop to go through the array of objects
             foreach (object obj in stuff)
