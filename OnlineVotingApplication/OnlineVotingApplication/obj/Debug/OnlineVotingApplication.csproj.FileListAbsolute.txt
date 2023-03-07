@@ -1,0 +1,8 @@
+C:\Users\Beni\Desktop\ProgGyak\CSharp-training\OnlineVotingApplication\OnlineVotingApplication\bin\Debug\OnlineVotingApplication.exe.config
+C:\Users\Beni\Desktop\ProgGyak\CSharp-training\OnlineVotingApplication\OnlineVotingApplication\bin\Debug\OnlineVotingApplication.exe
+C:\Users\Beni\Desktop\ProgGyak\CSharp-training\OnlineVotingApplication\OnlineVotingApplication\bin\Debug\OnlineVotingApplication.pdb
+C:\Users\Beni\Desktop\ProgGyak\CSharp-training\OnlineVotingApplication\OnlineVotingApplication\obj\Debug\OnlineVotingApplication.csproj.AssemblyReference.cache
+C:\Users\Beni\Desktop\ProgGyak\CSharp-training\OnlineVotingApplication\OnlineVotingApplication\obj\Debug\OnlineVotingApplication.csproj.SuggestedBindingRedirects.cache
+C:\Users\Beni\Desktop\ProgGyak\CSharp-training\OnlineVotingApplication\OnlineVotingApplication\obj\Debug\OnlineVotingApplication.csproj.CoreCompileInputs.cache
+C:\Users\Beni\Desktop\ProgGyak\CSharp-training\OnlineVotingApplication\OnlineVotingApplication\obj\Debug\OnlineVotingApplication.exe
+C:\Users\Beni\Desktop\ProgGyak\CSharp-training\OnlineVotingApplication\OnlineVotingApplication\obj\Debug\OnlineVotingApplication.pdb
