@@ -15,12 +15,12 @@ namespace OnlineVotingApplication
 
         static void Main(string[] args)
         {
-            Partys[] PoliticalParty = new Partys[5];
-            PoliticalParty[0] = new Partys(1, "Neo Privilege Party", 0);
-            PoliticalParty[1] = new Partys(2, "Southern Uniformity Party", 0);
-            PoliticalParty[2] = new Partys(3, "Patriotic Working Class Party", 0);
-            PoliticalParty[3] = new Partys(4, "Fanatical Coalition Movement", 0);
-            PoliticalParty[4] = new Partys(5, "National Taxpayer League", 0);
+            Partys party1 = new Partys(1, "Neo Privilege Party", 0);
+            Partys party2 = new Partys(2, "Southern Uniformity Party", 0);
+            Partys party3 = new Partys(3, "Patriotic Working Class Party", 0);
+            Partys party4 = new Partys(4, "Fanatical Coalition Movement", 0);
+            Partys party5 = new Partys(5, "National Taxpayer League", 0);
+            object[] partysArray = {party1,party2,party3,party4,party5};
             ArrayList usedPersonalIds = new ArrayList();
             bool quit = false;
             const int FIRST_PARTY = 1;
@@ -53,14 +53,19 @@ namespace OnlineVotingApplication
                     {
                         foreach (int id in usedPersonalIds)
                         {
-                            if (id == voterIDInInt)
+                            if (!id.Equals(voterIDInInt))
+                            {
+                                Console.WriteLine("Thanks!");
+                                usedPersonalIds.Add(voterIDInInt);
+                                isIdValid = true;
+                            }
+                            else 
                             {
                                 Console.WriteLine("You are already voted!");
+                                Quiting("quit");
                             }
                         }
                     }
-                    Console.WriteLine("Thanks!");
-                    isIdValid = true;
                 }
                 Console.WriteLine("Please choose one above!\n1.Neo Privilege Party\n2.Southern Uniformity Party\n3.Patriotic Working Class Party\n4.Fanatical Coalition Movement\n5.National Taxpayer League");
                 string choosedOption = Console.ReadLine();
@@ -89,7 +94,6 @@ namespace OnlineVotingApplication
                         isVoteValid = true;
                     }
                 }
-                quit = true;
             }
             void Quiting(string quiting)
             {
@@ -102,10 +106,9 @@ namespace OnlineVotingApplication
             {
                 if (votes == "votes")
                 {
-                    foreach (object vote in PoliticalParty)
+                    foreach (var item in partysArray)
                     {
-                        //pörgesd ki a tömböt
-                        Console.WriteLine(vote);
+                        Console.WriteLine(party1.Id+" ");
                     }
                 }
             }
